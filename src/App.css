@@ -2,6 +2,17 @@
   text-align: center;
 }
 
+.container {
+  background-color: blue;
+  width: 100%;
+  overflow-x: auto;
+  cursor: grab;
+}
+
+.test {
+  background-color: aqua;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { Container } from "@mui/material";
+import { useRef } from "react";
+import useScrollOnDrag from "react-scroll-ondrag";
+import "./App.css";
+import Test from "./Test copy";
+
+const ScrollableBox = ({ runScroll }) => {
+  const containerRef = useRef(null);
+  const { events } = useScrollOnDrag(containerRef, {
+    runScroll: runScroll && runScroll(containerRef),
+  });
+
+  return (
+    <Container sx={{ width: "100%" }} {...events} ref={containerRef}>
+      <Test />
+    </Container>
+  );
+};
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const ref = useRef();
+  const { events } = useScrollOnDrag(ref);
+
+  return <ScrollableBox />;
 }
 
 export default App;
